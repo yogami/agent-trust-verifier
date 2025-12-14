@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Agent {
+  did        String   @id
+  publicKey  String   @map("public_key")
+  domain     String
+  trustScore Float    @default(0.0) @map("trust_score")
+  isActive   Boolean  @default(true) @map("is_active")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("agents")
+}
+
+model Credential {
+  id             String   @id
+  issuer         String
+  subjectDid     String   @map("subject_did")
+  type           String[]
+  issuanceDate   DateTime @map("issuance_date")
+  expirationDate DateTime? @map("expiration_date")
+  payload        Json
+  proof          Json?
+  
+  @@map("credentials")
+}

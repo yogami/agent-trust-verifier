@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agent Trust Verifier (DID/VC System)
 
-## Getting Started
+Decentralized identity and trust verification system for AI agents.
 
-First, run the development server:
+## 🚀 Part of Multi-Agent Communication Suite (App 2 of 5)
+
+### Features
+- **DID Resolution**: Resolve and verify `did:web` identities
+- **Verifiable Credentials**: Issue and verify JWT-based VCs
+- **Trust Scoring**: Track and update agent trust scores
+- **Clean Architecture**: Domain-driven design
+- **Tembo Database**: Postgres-backed persistence
+
+### Tech Stack
+- Next.js 15 (App Router)
+- TypeScript
+- Prisma 7 + Postgres Adapter
+- Tembo (Postgres)
+- Jose (JWT/VC Signing)
+- Vitest + Playwright
+
+### Quick Start
 
 ```bash
+npm install
+npx prisma generate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### API Endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `POST /api/verify-agent` - Verify or register an agent DID
+- `POST /api/vc/issue` - Issue a Verified Credential
+- `POST /api/vc/verify` - Verify a Credential validity
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Environment Variables
 
-## Learn More
+Copy `.env.example` to `.env`:
+- `DATABASE_URL`: Tembo Postgres connection string
+- `DID_PRIVATE_KEY`: Hex-encoded private key for signing
 
-To learn more about Next.js, take a look at the following resources:
+### Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm test              # Unit tests
+npm run test:e2e      # E2E tests
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
