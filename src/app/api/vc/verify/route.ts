@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { CryptoService } from '@/infrastructure/services/CryptoService';
+import { zkCredentialIssuer } from '@/infrastructure/services/ZKCredentialIssuer';
 
 // Dependency Injection
 const cryptoService = new CryptoService();
@@ -13,10 +14,22 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Missing credential' }, { status: 400 });
         }
 
-        const result = await cryptoService.verifyCredential(credential);
+        // Verify standard JWS proof
+        const jwsResult = await cryptoService.verifyCredential(credential);
 
-        return NextResponse.json(result);
-    } catch (error: any) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        // If credential has ZK proof, verify that too
+        let zkVerified: boolean | undefined;
+        if (credential.zkProof) {
+            zkVerified = await zkCredentialIssuer.verifyZKProof(credential.zkProof);
+        }
+
+        return NextResponse.json({
+            valid: jwsResult.valid,
+            zkVerified,
+            error: jwsResult.error,
+        });
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        return NextResponse.json({ error: message }, { status: 500 });
     }
 }

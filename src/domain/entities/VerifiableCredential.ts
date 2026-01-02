@@ -12,6 +12,13 @@ export interface VerifiableCredential {
         proofPurpose: string;
         jws: string;
     };
+    zkProof?: {
+        proof: string;
+        publicSignals: string[];
+        verified: boolean;
+        taskIdHash: string;
+        proofSizeBytes: number;
+    };
 }
 
 export interface CredentialIssuanceRequest {
