@@ -11,7 +11,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "lint:duplication": "jscpd src --threshold 5",
+    "test:coverage": "vitest run --coverage --coverage.thresholds.lines=80 --coverage.thresholds.branches=80",
+    "quality": "npm run lint && npm run lint:duplication && npm run test:coverage"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.1.0",
@@ -36,6 +39,7 @@
     "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
+    "jscpd": "^4.0.5",
     "jsdom": "^27.3.0",
     "tailwindcss": "^4",
     "typescript": "^5",
