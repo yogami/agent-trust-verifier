@@ -4,7 +4,7 @@
  * Issues Verifiable Credentials with attached ZK-SLA proofs.
  */
 import * as crypto from 'crypto';
-import { VerifiableCredential } from '../../domain/entities/VerifiableCredential';
+import { VerifiableCredential } from '../../lib/trust-verifier/domain/entities/VerifiableCredential';
 
 export interface ZKProofInput {
     taskId: string;

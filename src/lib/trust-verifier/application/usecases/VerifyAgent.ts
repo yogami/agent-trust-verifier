@@ -1,5 +1,5 @@
-import { ITrustRepository } from '../../domain/interfaces/ITrustRepository';
-import { ICredentialService } from '../../domain/interfaces/ICredentialService';
+import { ITrustRepository } from '../../domain/ports/ITrustRepository';
+import { ICredentialService } from '../../domain/ports/ICredentialService';
 import { AgentIdentity } from '../../domain/entities/AgentIdentity';
 
 export class VerifyAgent {

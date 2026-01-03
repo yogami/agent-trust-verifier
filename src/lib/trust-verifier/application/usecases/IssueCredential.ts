@@ -1,4 +1,4 @@
-import { ICredentialService } from '../../domain/interfaces/ICredentialService';
+import { ICredentialService } from '../../domain/ports/ICredentialService';
 import { CredentialIssuanceRequest, VerifiableCredential } from '../../domain/entities/VerifiableCredential';
 
 export class IssueCredential {

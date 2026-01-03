@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { IssueCredential } from '@/application/usecases/IssueCredential';
+import { IssueCredential } from '@/lib/trust-verifier/application/usecases/IssueCredential';
 import { CryptoService } from '@/infrastructure/services/CryptoService';
 import { ZKCredentialIssuer, zkCredentialIssuer } from '@/infrastructure/services/ZKCredentialIssuer';
 

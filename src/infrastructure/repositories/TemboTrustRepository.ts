@@ -1,6 +1,6 @@
 import prisma from '../db';
-import { ITrustRepository } from '../../domain/interfaces/ITrustRepository';
-import { AgentIdentity } from '../../domain/entities/AgentIdentity';
+import { ITrustRepository } from '../../lib/trust-verifier/domain/ports/ITrustRepository';
+import { AgentIdentity } from '../../lib/trust-verifier/domain/entities/AgentIdentity';
 
 export class TemboTrustRepository implements ITrustRepository {
     async saveIdentity(identity: AgentIdentity): Promise<AgentIdentity> {

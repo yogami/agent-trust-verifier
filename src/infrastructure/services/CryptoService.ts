@@ -1,7 +1,7 @@
 import { SignJWT, importPKCS8, generateKeyPair, exportJWK } from 'jose';
 import { v4 as uuidv4 } from 'uuid';
-import { ICredentialService } from '../../domain/interfaces/ICredentialService';
-import { VerifiableCredential, CredentialIssuanceRequest } from '../../domain/entities/VerifiableCredential';
+import { ICredentialService } from '../../lib/trust-verifier/domain/ports/ICredentialService';
+import { VerifiableCredential, CredentialIssuanceRequest } from '../../lib/trust-verifier/domain/entities/VerifiableCredential';
 
 export class CryptoService implements ICredentialService {
     private privateKey: string;

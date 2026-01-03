@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { VerifyAgent } from '@/application/usecases/VerifyAgent';
+import { VerifyAgent } from '@/lib/trust-verifier/application/usecases/VerifyAgent';
 import { TemboTrustRepository } from '@/infrastructure/repositories/TemboTrustRepository';
 import { CryptoService } from '@/infrastructure/services/CryptoService';
 

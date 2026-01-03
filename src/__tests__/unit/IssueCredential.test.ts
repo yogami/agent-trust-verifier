@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { IssueCredential } from '../../application/usecases/IssueCredential';
-import { ICredentialService } from '../../domain/interfaces/ICredentialService';
+import { IssueCredential } from '../../lib/trust-verifier/application/usecases/IssueCredential';
+import { ICredentialService } from '../../lib/trust-verifier/domain/ports/ICredentialService';
 
 describe('IssueCredential', () => {
     it('should issue a credential when request is valid', async () => {

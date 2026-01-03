@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { VerifyAgent } from '../../application/usecases/VerifyAgent';
-import { ITrustRepository } from '../../domain/interfaces/ITrustRepository';
-import { ICredentialService } from '../../domain/interfaces/ICredentialService';
+import { VerifyAgent } from '../../lib/trust-verifier/application/usecases/VerifyAgent';
+import { ITrustRepository } from '../../lib/trust-verifier/domain/ports/ITrustRepository';
+import { ICredentialService } from '../../lib/trust-verifier/domain/ports/ICredentialService';
 
 describe('VerifyAgent', () => {
     let verifyAgent: VerifyAgent;
